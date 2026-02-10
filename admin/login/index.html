@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Şirkət Admin • Giriş</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="container" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+    <div class="card p20" style="width:min(560px,100%);">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="brandLogo"></div>
+        <div>
+          <div style="font-weight:900;font-size:18px">Şirkət Admin Girişi</div>
+          <div style="color:var(--sub);font-size:13px">Kursların idarəsi • aktiv/suspend</div>
+        </div>
+      </div>
+
+      <div class="mt16">
+        <label style="font-size:12px;color:var(--sub)">Username</label>
+        <input class="input" id="u" placeholder="company1"/>
+      </div>
+      <div class="mt12">
+        <label style="font-size:12px;color:var(--sub)">Şifrə</label>
+        <input class="input" id="p" type="password" placeholder="company123"/>
+      </div>
+
+      <div class="row mt16">
+        <button class="btn solid col" id="loginBtn">Daxil ol</button>
+        <a class="btn col" href="../../index.html">Ana sayt</a>
+      </div>
+
+      <div class="mt16">
+        <button class="btn" id="demoFill">Demo doldur</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../common.js"></script>
+  <script src="../../storage.js"></script>
+  <script>
+    document.getElementById("loginBtn").onclick = ()=>{
+      const res = EJStore.companyLogin(
+        document.getElementById("u").value.trim(),
+        document.getElementById("p").value.trim()
+      );
+      if(!res.ok) return EJ.toast(res.error, "danger");
+      location.href = "../../e-admin.html";
+    };
+
+    document.getElementById("demoFill").onclick = ()=>{
+      document.getElementById("u").value="company1";
+      document.getElementById("p").value="company123";
+    };
+  </script>
+</body>
+</html>
