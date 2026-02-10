@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kurs Admin • Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="freeze" class="freeze">
+    <div class="box">
+      <span class="badge danger">Sistem dondurulub</span>
+      <h3 class="mt12">Şirkət tərəfindən donduruldu</h3>
+      <p>Ödəniş gecikdiyi üçün sistem müvəqqəti bloklanıb. Bütün məlumatlar saxlanılıb, lakin heç bir əməliyyat etmək mümkün deyil.</p>
+    </div>
+  </div>
+
+  <div class="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brandLogo"></div>
+        <div>
+          <h1>Kurs Admin</h1>
+          <p>Qeydiyyat & idarəetmə</p>
+        </div>
+      </div>
+
+      <div class="mt12">
+        <div class="badge">COURSE ADMIN</div>
+        <div style="margin-top:8px;font-weight:900" id="meName">—</div>
+      </div>
+
+      
+      <nav class="nav mt16">
+        <a href="#/dashboard" class="active" id="navDash"><span>•</span><div><div style="font-weight:700">Dashboard</div><div class="small">ümumi baxış</div></div></a>
+        <a href="#/teachers" id="navT"><span>•</span><div><div style="font-weight:700">Müəllimlər</div><div class="small">qeydiyyat</div></div></a>
+        <a href="#/students" id="navS"><span>•</span><div><div style="font-weight:700">Tələbələr</div><div class="small">qeydiyyat</div></div></a>
+        <a href="#/rooms" id="navR"><span>•</span><div><div style="font-weight:700">Dərs otaqları</div><div class="small">siniflər</div></div></a>
+        <a href="#/attendance" id="navA"><span>•</span><div><div style="font-weight:700">Davamiyyət</div><div class="small">izləmə</div></div></a>
+        <a href="#/payments" id="navPay"><span>•</span><div><div style="font-weight:700">Ödənişlər</div><div class="small">tələbə ödənişləri</div></div></a>
+        <a href="#/settings" id="navSet"><span>•</span><div><div style="font-weight:700">Parametrlər</div><div class="small">kurs məlumatları</div></div></a>
+      </nav>
+
+
+      <div class="mt16">
+        <button class="btn danger" id="logoutBtn" style="width:100%">Çıxış</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="page"></div>
+    </main>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+
+  <script src="common.js"></script>
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="course-admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Jurnal • Giriş</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+    <div class="card p20" style="width:min(560px,100%);">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="brandLogo"></div>
+        <div>
+          <div style="font-weight:900;font-size:18px">Panelə giriş</div>
+          <div style="color:var(--sub);font-size:13px">Kurs admin • müəllim • tələbə</div>
+        </div>
+      </div>
+
+      <div class="mt16">
+        <label style="font-size:12px;color:var(--sub)">İstifadəçi ID</label>
+        <input class="input" id="u" placeholder="Məs: K-10001 / M-10021 / T-32872"/>
+      </div>
+
+      <div class="mt12">
+        <label style="font-size:12px;color:var(--sub)">Şifrə</label>
+        <input class="input" id="p" type="password" placeholder="****"/>
+      </div>
+
+      <div class="row mt16">
+        <button class="btn solid col" id="loginBtn">Daxil ol</button>
+        <a class="btn col" href="index.html">Tanıtım saytı</a>
+      </div>
+
+      <div class="mt16" id="hint" style="color:var(--sub);font-size:13px;line-height:1.6"></div>
+
+      <div class="mt16">
+        <button class="btn" id="demoFill">Demo girişləri göstər</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+
+  <script>
+    document.getElementById("loginBtn").onclick = ()=>{
+      const id = document.getElementById("u").value.trim();
+      const pw = document.getElementById("p").value.trim();
+
+      const res = EJStore.courseLoginAny(id, pw);
+      if(!res.ok) return EJ.toast(res.error, "danger");
+
+      Auth.routeByRole(res.user);
+    };
+
+    document.getElementById("demoFill").onclick = ()=>{
+      const db = EJStore.load();
+      // ilk kursdan demo tapırıq
+      let demo = null;
+      for(const c of (db.courses||[])){
+        const users = db.courseData?.[c.id]?.users || [];
+        const ca = users.find(u=>u.role==="courseAdmin");
+        const t  = users.find(u=>u.role==="teacher");
+        const st = users.find(u=>u.role==="student");
+        if(ca || t || st){ demo = {course:c, ca, t, st}; break; }
+      }
+      if(!demo) return (document.getElementById("hint").textContent = "Demo məlumat tapılmadı.");
+
+      const status = EJStore.courseStatus(demo.course.id);
+      const s = status==="suspended" ? "suspended (freeze)" : status;
+
+      document.getElementById("hint").innerHTML = `
+        <div class="card p16" style="background:var(--surface);border:1px dashed var(--border);box-shadow:none">
+          <div style="font-weight:900;margin-bottom:8px">
+            Demo girişlər — Kurs: <b>${EJ.escape(demo.course.name)}</b> (${EJ.escape(demo.course.id)}) • Status: <b>${EJ.escape(s)}</b>
+          </div>
+          <div><b>Kurs admin</b>: ${EJ.escape(demo.ca?.id||"—")} / ${EJ.escape(demo.ca?.password||"—")}</div>
+          <div><b>Müəllim</b>: ${EJ.escape(demo.t?.id||"—")} / ${EJ.escape(demo.t?.password||"—")}</div>
+          <div><b>Tələbə</b>: ${EJ.escape(demo.st?.id||"—")} / ${EJ.escape(demo.st?.password||"—")}</div>
+          <div style="margin-top:10px;color:var(--sub)">Şirkət admin: <b>/admin/login/</b></div>
+        </div>
+      `;
+
+      // auto-fill: kurs admin
+      if(demo.ca){
+        document.getElementById("u").value = demo.ca.id;
+        document.getElementById("p").value = demo.ca.password;
+      }
+    };
+  </script>
+</body>
+</html>

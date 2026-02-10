@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tələbə • Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="freeze" class="freeze">
+    <div class="box">
+      <span class="badge danger">Sistem dondurulub</span>
+      <h3 class="mt12">Şirkət tərəfindən donduruldu</h3>
+      <p>Ödəniş gecikdiyi üçün sistem müvəqqəti bloklanıb. Bütün məlumatlar saxlanılıb, lakin əməliyyatlar qadağandır.</p>
+    </div>
+  </div>
+
+  <!-- Mobile topbar -->
+  <header class="mTopbar">
+    <button class="mBurger" id="mBurger" aria-label="Menyu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mTitle">
+      <div class="mTitleMain">Tələbə Paneli</div>
+      <div class="mTitleSub" id="mCourseName">—</div>
+    </div>
+
+    <button class="btn danger mLogout" id="mLogoutBtn">Çıxış</button>
+  </header>
+
+  <!-- Drawer overlay (mobile) -->
+  <div class="drawerOverlay" id="drawerOverlay" aria-hidden="true"></div>
+
+  <div class="appShell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brandLogo"></div>
+        <div>
+          <h1>Tələbə</h1>
+          <p>Müəllimlər • cədvəl</p>
+          <p class="small" id="courseName">—</p>
+        </div>
+      </div>
+
+      <div class="mt12">
+        <div class="badge">STUDENT</div>
+        <div style="margin-top:8px;font-weight:900" id="meName">—</div>
+      </div>
+
+      <!-- Scrollable nav area -->
+      <nav class="nav mt16 navScroll" id="studentNav">
+        <a href="#/profile" id="navProf">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Profilim</div>
+            <div class="small">ümumi baxış</div>
+          </div>
+        </a>
+
+        <a href="#/teachers" id="navT">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Müəllimlər</div>
+            <div class="small">profil görünür</div>
+          </div>
+        </a>
+
+        <a href="#/schedule" id="navSch">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Cədvəl</div>
+            <div class="small">dərs günləri</div>
+          </div>
+        </a>
+
+        <a href="#/attendance" id="navAtt">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Davamiyyət</div>
+            <div class="small">statistika</div>
+          </div>
+        </a>
+
+        <a href="#/materials" id="navMat">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Materiallar</div>
+            <div class="small">pdf/docx/link</div>
+          </div>
+        </a>
+
+        <a href="#/grades" id="navGr">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Qiymətlər</div>
+            <div class="small">0-100</div>
+          </div>
+        </a>
+
+        <a href="#/announcements" id="navAnn">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Bildirişlər</div>
+            <div class="small">elanlar</div>
+          </div>
+        </a>
+
+        <a href="#/payments" id="navPay">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Ödənişlər</div>
+            <div class="small">tarixçə</div>
+          </div>
+        </a>
+
+        <a href="#/syllabus" id="navSyl">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Sillabus</div>
+            <div class="small">PDF/DOCX</div>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Pinned footer (always visible) -->
+      <div class="sidebarFooter">
+        <button class="btn danger" id="logoutBtn" style="width:100%">Çıxış</button>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <div id="page"></div>
+    </main>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="student.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Şirkət Admin • Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brandLogo"></div>
+        <div>
+          <h1>Şirkət Admin</h1>
+          <p>E-Jurnal idarəetmə</p>
+        </div>
+      </div>
+
+      <div class="mt12">
+        <div class="badge">COMPANY ADMIN</div>
+        <div style="margin-top:8px;font-weight:900" id="adminName">—</div>
+      </div>
+
+      <nav class="nav mt16">
+        <a href="#/dashboard" class="active" id="navDash">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Dashboard</div>
+            <div class="small">statistika</div>
+          </div>
+        </a>
+      
+        <a href="#/courses" id="navCourses">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Kurslar</div>
+            <div class="small">status & giriş</div>
+          </div>
+        </a>
+      
+        <a href="#/payments" id="navPay">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Ödənişlər</div>
+            <div class="small">tarixçə & ixrac</div>
+          </div>
+        </a>
+
+      
+        <a href="#/messages" id="navMsg">
+          <span>•</span>
+          <div>
+            <div style="font-weight:700">Əlaqə mesajları</div>
+            <div class="small">lead list</div>
+          </div>
+        </a>
+      </nav>
+      
+
+      <div class="mt16">
+        <button class="btn danger" id="logoutBtn" style="width:100%">Çıxış</button>
+        <button class="btn mt12" id="resetBtn" style="width:100%">Demo sıfırla</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="page"></div>
+    </main>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+  <script src="e-admin.js"></script>
+</body>
+</html>

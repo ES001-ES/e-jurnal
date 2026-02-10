@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Müəllim • Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="freeze" class="freeze">
+    <div class="box">
+      <span class="badge danger">Sistem dondurulub</span>
+      <h3 class="mt12">Şirkət tərəfindən donduruldu</h3>
+      <p>Ödəniş gecikdiyi üçün sistem müvəqqəti bloklanıb. Bütün məlumatlar saxlanılıb, lakin əməliyyatlar qadağandır.</p>
+    </div>
+  </div>
+
+  <div class="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brandLogo"></div>
+        <div>
+          <h1>Müəllim</h1>
+          <p>Dərs otaqları • tələbələr</p>
+          <p class="small" id="courseName">—</p>
+        </div>
+      </div>
+
+      <div class="mt12">
+        <div class="badge">TEACHER</div>
+        <div style="margin-top:8px;font-weight:900" id="meName">—</div>
+      </div>
+
+      <nav class="nav mt16">
+        <a href="#/rooms" class="active" id="navRooms"><span>•</span><div><div style="font-weight:700">Dərs otaqları</div><div class="small">tələbə + sillabus</div></div></a>
+        <a href="#/attendance" id="navAtt"><span>•</span><div><div style="font-weight:700">Davamiyyət</div><div class="small">+ / - / L</div></div></a>
+                <a href="#/attendance-history" id="navAttHist"><span>•</span><div><div style="font-weight:700">Davamiyyət keçmişi</div><div class="small">tarixçə</div></div></a>
+<a href="#/materials" id="navMat"><span>•</span><div><div style="font-weight:700">Materiallar</div><div class="small">pdf/docx/link</div></div></a>
+        <a href="#/grades" id="navGr"><span>•</span><div><div style="font-weight:700">Qiymətlər</div><div class="small">0-100</div></div></a>
+        <a href="#/announcements" id="navAnn"><span>•</span><div><div style="font-weight:700">Bildirişlər</div><div class="small">elanlar</div></div></a>
+        <a href="#/profile" id="navP"><span>•</span><div><div style="font-weight:700">Mənim profilim</div><div class="small">tələbələr görür</div></div></a>
+      </nav>
+
+      <div class="mt16">
+        <button class="btn danger" id="logoutBtn" style="width:100%">Çıxış</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="page"></div>
+    </main>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="teacher.js"></script>
+</body>
+</html>
